@@ -19,7 +19,7 @@ const menus = [
 ];
 console.log(124,process);
 
-let BASE_NAME = window.__POWERED_BY_QIANKUN__  ?  '/react/react-admin-system' : "/react-admin-system" 
+let BASE_NAME =  "/react-admin-system" 
 const App = () => {
   const [refresh, setRefresh] = useState(0);
   const [selectedKeys, setSelectKeys] = useState(["react"]);
