@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Card, Table, Avatar } from "antd";
-const result = [
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一12个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一1个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一2个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一3个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一4个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一5个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一6个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一7个图片的url" },
-  { thumbnailUrl: "zhangjinxi", title: "这是title", url: "这是一8个图片的url" },
-];
+import Mock from 'mockjs';
+let result= Mock.mock({
+  "list|1-100":[
+    {
+      'name|1-10':'@name',
+      id:'@id',
+      increment:'@increment',
+      firstName:'@first',
+      title:'@title',
+      titlee:'@title(5,10)',
+      case:'@float(1,100)',
+      integer:'@integer(1,3)',
+      'type|1':[1,2,3,'hah'],
+      'status|1':['12','23'],
+      time:'@datetime',
+      boolean:'boolean',
+      image:"@img()"
+    }
+  ]
+})
 const { Column } = Table;
 const List = () => {
   // 设置列表信息
@@ -23,11 +32,11 @@ const List = () => {
   useEffect(() => {
     console.log({ page });
     (async () => {
-      setData(() => result);
+      setData(() => result.list);
       setPageInfo(() => ({
         current: 1,
-        pageSize: 10,
-        total: 100,
+        pageSize: 100,
+        total: 1000,
         onChange: (page) => setPage(page),
       }));
     })();
@@ -35,14 +44,20 @@ const List = () => {
 
   return (
     <Card title="React 子应用列表页">
-      <h2 style={{ fontSize: "26px", color: "#fb4487" }}>
+      {/* <h2 style={{ fontSize: "26px", color: "#fb4487" }}>
         曾经充满数据的一个列表（因服务器到期，此处数据已丢失）
-      </h2>
+      </h2> */}
       {
-        <Table rowKey="url" dataSource={data} pagination={pageInfo}>
-          <Column dataIndex="thumbnailUrl" render={(text) => <Avatar src={text} />} />
+        <Table rowKey="increment" dataSource={data} pagination={pageInfo}>
+          <Column dataIndex="id" />
+          <Column dataIndex="increment" />
+          <Column dataIndex="firstName" />
+          <Column dataIndex="titlee" />
           <Column dataIndex="title" />
-          <Column dataIndex="url" render={(text) => <>￥ {text}</>} />
+          <Column dataIndex="case" />
+          <Column dataIndex="time" />
+          <Column dataIndex="image" render={(text) => <Avatar src={text} />} />
+          <Column dataIndex="integer" render={(text) => <>￥ {text}</>} />
         </Table>
       }
     </Card>
