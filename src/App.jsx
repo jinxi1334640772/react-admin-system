@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     const menu = menus.find((item) => `${base}${item.route}` === pathname);
     setSelectKeys(() => [menu ? menu.key : "react"]);
-  }, [refresh]);
+  }, [refresh,base,pathname]);
 
   // 设置路由命名空间
   return (
