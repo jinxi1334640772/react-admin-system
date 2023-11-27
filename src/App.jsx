@@ -18,7 +18,13 @@ const menus = [
   },
 ];
 
-const BASE_NAME = window.__POWERED_BY_QIANKUN__ ? "/react" : "";
+const BASE_NAME = ''
+if (window.__POWERED_BY_QIANKUN__ ) {
+  BASE_NAME = process.env.NODE_ENV==='development' ? "/react" : "/micro-frondend-container/react";
+}else{
+  
+  BASE_NAME = process.env.NODE_ENV==='development' ? "" : "/react-admin-system";
+}
 const App = () => {
   const [refresh, setRefresh] = useState(0);
   const [selectedKeys, setSelectKeys] = useState(["react"]);

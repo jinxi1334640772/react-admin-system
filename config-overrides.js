@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   webpack: (config) => {
+    config.output.publicPath=process.env.NODE_ENV === 'development'?'/':'/react-admin-system'
     // 微应用的包名，这里与主应用中注册的微应用名称一致
     config.output.library = `ReactMicroApp`;
     // 将你的 library 暴露为所有的模块定义下都可运行的方式
