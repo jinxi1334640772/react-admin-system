@@ -17,21 +17,20 @@ const menus = [
     title: "列表页",
   },
 ];
-console.log(124,process);
-
 let BASE_NAME =  "/react-admin-system" 
 const App = () => {
   const [refresh, setRefresh] = useState(0);
   const [selectedKeys, setSelectKeys] = useState(["react"]);
+  const base = `${window.__POWERED_BY_QIANKUN__?'/react':''}${BASE_NAME}`
+  const { pathname } = window.location;
   useEffect(() => {
-    const { pathname } = window.location;
-    const menu = menus.find((item) => `${BASE_NAME}${item.route}` === pathname);
+    const menu = menus.find((item) => `${base}${item.route}` === pathname);
     setSelectKeys(() => [menu ? menu.key : "react"]);
   }, [refresh]);
 
   // 设置路由命名空间
   return (
-    <Router basename={BASE_NAME}>
+    <Router basename={base}>
       <section>
         <Menu
           onClick={() => setRefresh((refresh) => ++refresh)}

@@ -42,9 +42,9 @@ export async function unmount(props) {
   ReactDOM.unmountComponentAtNode(document.getElementById("root"));
 }
 
-if (process.env.NODE_ENV === "development") {
-  window["ReactMicroApp"] = {};
-  window["ReactMicroApp"].bootstrap = bootstrap;
-  window["ReactMicroApp"].mount = mount;
-  window["ReactMicroApp"].unmount = unmount;
-}
+// if (process.env.NODE_ENV === "development") {
+//   window["ReactMicroApp"] = {};
+//   window["ReactMicroApp"].bootstrap = bootstrap;
+//   window["ReactMicroApp"].mount = mount;
+//   window["ReactMicroApp"].unmount = unmount;
+// }
