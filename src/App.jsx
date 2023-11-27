@@ -17,8 +17,8 @@ const menus = [
     title: "列表页",
   },
 ];
-
-const BASE_NAME = ''
+console.log(124,process);
+let BASE_NAME = ''
 if (window.__POWERED_BY_QIANKUN__ ) {
   BASE_NAME = process.env.NODE_ENV==='development' ? "/react" : "/micro-frondend-container/react";
 }else{
